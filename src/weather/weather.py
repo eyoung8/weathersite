@@ -103,13 +103,16 @@ def get_std_weather_results(data, settings=['location', 'temp', 'windchill', 'co
 
 def get_weather(location):
     query = None
-    if (is_zip(location)):
+    if (len(location.split())== 1):
         query = get_query_by_zip(location)
     else:
         city, state = location.split()
         query = get_query(city, state)
     data = get_yahoo_weather_json(query)
-    results = get_std_weather_results(data)
+    if(data['query']['results']):
+        results = get_std_weather_results(data)
+    else:
+        results = None
     return results
 
 def main():

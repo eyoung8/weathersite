@@ -17,9 +17,15 @@ class HomeView(View):
 
     def post(self, request, *args, **kwargs):
         form = LocationForm(request.POST)
-        context = {}
+        context = {
+            "title": 'Enter Location:',
+            "form": form
+        }
+        template = "weather/home.html"
         if (form.is_valid()):
             location = form.cleaned_data.get("location")
             context['results'] = get_weather(location)
+            template = "weather/results.html"
             print(context)
-        return render(request, "weather/results.html", context)
+
+        return render(request, template, context)
