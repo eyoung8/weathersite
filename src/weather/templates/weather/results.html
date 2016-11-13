@@ -2,6 +2,7 @@
 
 
 {% block title %}
+{{ results.0 }}
 {% endblock title %}
 
 {% block styles %}
@@ -9,11 +10,9 @@
 {% endblock styles %}
 
 {% block content %}
-    {% for result in result %}
-        {{ result }}
+    {% for result in results %}
+        {{ result }} 
+        <br>
     {% endfor %}
 {% endblock content %}
 
-{% for result in result %}
-        {{ result }}
-    {% endfor %}
