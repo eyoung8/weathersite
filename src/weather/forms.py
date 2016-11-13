@@ -8,7 +8,7 @@ class LocationForm(forms.Form):
          validators=[],
          widget = forms.TextInput(
                 attrs = {
-                "placeholder": "Enter 'city, state' OR enter a zip code",
+                "placeholder": "Enter location",
                 }
             )
          )
