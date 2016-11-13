@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+{% endblock title %}
+
+{% block styles %}
+{{ block.super }}
+{% endblock styles %}
+
+{% block content %}
+    {% for result in result %}
+        {{ result }}
+    {% endfor %}
+{% endblock content %}
+
+{% for result in result %}
+        {{ result }}
+    {% endfor %}
