@@ -13,10 +13,6 @@ class LocationForm(forms.Form):
             )
          )
 
-    # def clean(self):
-    #     cleaned_data = super(LocationForm, self).clean()
-    #     location = cleaned_data.get('location')
-
     def clean_location(self):
         location = self.cleaned_data['location']
         if not isinstance(location, str):

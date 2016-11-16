@@ -25,7 +25,10 @@ class HomeView(View):
         if (form.is_valid()):
             location = form.cleaned_data.get("location")
             context['results'] = get_weather(location)
-            template = "weather/results.html"
-            print(context)
-
+            if context['results']:
+                template = "weather/results.html"
+            else:
+                template = "weather/home.html"
+                context["title"] = "That location couldn't be found"
+                context["form"] = LocationForm()
         return render(request, template, context)
