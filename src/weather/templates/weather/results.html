@@ -1,18 +1,60 @@
 {% extends "base.html" %}
+{% include "weather/search_bar.html" %}
 
-
+<!-- 'location', 'temp', 'condition', 'high', 'low', 'humidity', 'date' -->
 {% block title %}
-{{ results.0 }}
+{{ results.location }}
 {% endblock title %}
 
 {% block styles %}
 {{ block.super }}
+
+<style>
+    .h3 {
+        margin: 0px;
+    }
+    .h1 {
+        margin: 5px;
+    }
+    .h4 {
+        margin: 3px;
+    }
+    .small {
+        margin: 3px;
+    }
+
+</style>
 {% endblock styles %}
 
+
+{% block navbar %}
+{% include "weather/search_bar.html" %}
+{% endblock navbar %}
+
 {% block content %}
-    {% for result in results %}
-        {{ result }} 
-        <br>
-    {% endfor %}
+<div class="row h1 text-left">
+    <div class='col-xs-offset-2 col-xs-10 col-sm-offset-3 col-sm-9'>
+        {{ results.location }}
+    </div>
+</div>
+<div class='row h3 text-left'>
+    <div class='col-xs-10 col-xs-offset-2 col-sm-offset-3 col-sm-9'> 
+        Temperature: {{ results.temp }}<br>
+        Condition: {{ results.condition }}<br>
+        Humidity: {{ results.humidity }}<br>
+    </div>
+
+</div>
+<div class='row h4 text-left'>
+    <div class='col-xs-10 col-xs-offset-2 col-sm-offset-3 col-sm-9'>
+        High: {{ results.high }}<br>
+        Low: {{ results.low }}<br>
+    </div>
+</div>
+<div class='row text-left small'>
+    <div class='col-xs-10 col-xs-offset-2 col-sm-offset-3 col-sm-9'>
+    Accessed: {{ results.date }} <br>
+    </div>
+</div>
 {% endblock content %}
 

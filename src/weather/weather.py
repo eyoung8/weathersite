@@ -81,7 +81,7 @@ displayDict = { "temp" : ["Temperature: ", get_temp, " F"],
                 "humidity" : ["Humidity: ", get_humidity, "%"],
                 "location" : ["", get_location, ""]
                 }
-displayDict["temp"]
+#displayDict["temp"]
 
 def get_query(city, state):
     loc = city + ", " + state
@@ -92,11 +92,12 @@ def get_query_by_zip(loc):
     query = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='"+ loc + "')"
     return query
 
-def get_std_weather_results(data, settings=['location', 'temp', 'windchill', 'condition', 'high', 'low', 'humidity', 'date']):
-    results = []
+def get_std_weather_results(data, settings=['location', 'temp', 'condition', 'high', 'low', 'humidity', 'date']):
+    results = {}
     for word in settings:
         try:
-            results.append('{0}{1}{2}'.format(displayDict[word][0], displayDict[word][1](data), displayDict[word][2]))
+            results[word] = ('{}{}'.format(displayDict[word][1](data), displayDict[word][2]))
+            
         except KeyError as err:
             pass
     return results

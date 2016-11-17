@@ -2,22 +2,30 @@
 {% load crispy_forms_tags %}
 
 
+
 {% block title %}
 Enter Location
 {% endblock title %}
 
 {% block styles %}
 {{ block.super }}
+
 {% endblock styles %}
 
+
 {% block content %}
-    <h1 class="cover-heading"> {{ title }}</h1>
-    <p class="lead">
-        <div class='col-sm-6 col-sm-offset-3'>
-            <form method='POST' action='.'> {% csrf_token %}
-            {{ form|crispy }} <input class='btn btn-primary' type='submit' value='Search &raquo'>
-            </form>
-        </div>
-    </p>
+<p class="lead">
+    <div clas='row'>
+        <div class='col-sm-12'> <h1 class="cover-heading">{{ title }}</h1></div>
+
+            <form class='form-inline' method='POST' action='.'> {% csrf_token %}
+            <div class="col-sm-12">
+                    <input type="text" class="form-control" id="location" name="location" placeholder="Enter Location">
+                    <input class='btn btn-primary' type='submit' value='Search &raquo'>
+            </div>
+            
+        </form>
+    </div>
+</p>
 {% endblock content %}
 
