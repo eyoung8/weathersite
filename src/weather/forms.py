@@ -1,5 +1,5 @@
 from django import forms
-from .utils import validate_location
+from .validators import validate_location
 from django.core.exceptions import ValidationError
 
 class LocationForm(forms.Form):

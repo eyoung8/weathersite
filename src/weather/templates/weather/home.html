@@ -20,8 +20,9 @@ Enter Location
 
             <form class='form-inline' method='POST' action='.'> {% csrf_token %}
             <div class="col-sm-12">
-                    <input type="text" class="form-control" id="location" name="location" placeholder="Enter Location">
-                    <input class='btn btn-primary' type='submit' value='Search &raquo'>
+                {{ form | crispy }}
+<!--                     <input type="text" class="form-control" id="location" name="location" placeholder="Enter Location">
+ -->                    <input class='btn btn-primary' type='submit' value='Search &raquo'>
             </div>
             
         </form>

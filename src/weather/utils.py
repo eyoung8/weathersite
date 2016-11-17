@@ -1,10 +1,4 @@
 
-def validate_location(location):
-    if (is_zip(location)):
-        pass
-    else:
-        location = format_address(location)
-    return location
 
 def is_zip(location):
     is_zip = True

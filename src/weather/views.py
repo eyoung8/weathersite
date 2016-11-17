@@ -6,7 +6,7 @@ from .weather import get_weather
 from .forms import LocationForm
 # Create your views here.
 
-class HomeView(View):
+class WeatherView(View):
     def get(self, request, *args, **kwargs):
         form = LocationForm()
         context = {
@@ -17,18 +17,17 @@ class HomeView(View):
 
     def post(self, request, *args, **kwargs):
         form = LocationForm(request.POST)
+        template = "weather/home.html"
         context = {
-            "title": 'Enter Location:',
             "form": form
         }
-        template = "weather/home.html"
         if (form.is_valid()):
             location = form.cleaned_data.get("location")
-            context['results'] = get_weather(location)
-            if context['results']:
+            results = get_weather(location)
+            if results:
                 template = "weather/results.html"
+                context['results'] =  results
             else:
                 template = "weather/home.html"
                 context["title"] = "That location couldn't be found"
-                context["form"] = LocationForm()
         return render(request, template, context)
